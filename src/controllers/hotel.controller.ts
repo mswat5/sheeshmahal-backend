@@ -102,7 +102,7 @@ export const getAllHotels = async (req: Request, res: Response) => {
       prisma.hotel.count(),
     ]);
 
-    return res.status(200).json({
+    res.status(200).json({
       data: hotels,
       page,
       totalPages: Math.ceil(total / limit),
@@ -110,7 +110,7 @@ export const getAllHotels = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error("Get All Hotels Error:", error);
-    return res.status(500).json({ message: "Something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 

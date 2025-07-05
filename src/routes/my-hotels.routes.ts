@@ -8,7 +8,7 @@ import {
   updateHotel,
 } from "../controllers/my-hotel.controller";
 import upload from "../utils/multer";
-import { searchHotels } from "../controllers/hotel.controller";
+import { searchHotels, getAllHotels } from "../controllers/hotel.controller";
 
 const router = Router();
 
@@ -18,5 +18,5 @@ router.get("/me", authenticateToken, getMyHotel);
 router.get("/me/:id", authenticateToken, getMyHotelById);
 // router.get("/public/:id", getHotelByIdPublic);
 router.get("/search", searchHotels);
-// router.get("/", getAllPublicHotels);
+router.get("/public", getAllHotels);
 export default router;

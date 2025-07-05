@@ -14,7 +14,7 @@ export const createHotel = async (req: Request, res: Response) => {
     //   const image = imageUrls[0];
     const validation = createHotelSchema.safeParse({
       ...req.body,
-      image: imageUrls,
+      images: imageUrls,
     });
     if (!validation.success) {
       res.status(400).json({ errors: formatZodError(validation.error) });

@@ -20,7 +20,7 @@ export const registerUser = async (req: Request, res: Response) => {
     const { username, fullName, email, password } = validation.data;
     const existingUser = await prisma.user.findFirst({
       where: {
-        OR: [{ email }, { password }],
+        email,
       },
     });
     if (existingUser) {
