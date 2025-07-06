@@ -1,13 +1,13 @@
-import { PrismaClient } from "@prisma/client";
-import { Request, Response } from "express";
-const prisma = new PrismaClient();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
 // export const getUserProfile = async (req: Request, res: Response) => {
 //   try {
 //     //hme kya chahiye ? user
 //     //kese dhund skte? email se..nh userid
 //     //already authenticated hai to jrurt nhi checkers ki yaha pe
 //     const userId = (req as any).user.id;
-
 //     const user = await prisma.user.findUnique({
 //       where: { id: userId },
 //       select: {
@@ -21,14 +21,12 @@ const prisma = new PrismaClient();
 //     if (!user) {
 //       return res.status(404).json({ message: "User not found" });
 //     }
-
 //     return res.json(user);
 //   } catch (error) {
 //     console.error("Error fetching user profile:", error);
 //     return res.status(500).json({ message: "Internal Server Error" });
 //   }
 // };
-
 // export const updateUserProfile = async (req: Request, res: Response) => {
 //   try {
 //     const userId = (req as any).user.id;
