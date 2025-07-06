@@ -55,7 +55,7 @@ export const getMyHotel = async (req: Request, res: Response) => {
 
 export const getMyHotelById = async (req: Request, res: Response) => {
   try {
-    const id = parseInt(req.params.body);
+    const id = parseInt(req.params.id);
     const userId = (req as any).user.id;
     const hotel = await prisma.hotel.findFirst({
       where: { id, userId },
