@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes";
 import hotelRoutes from "./routes/my-hotels.routes";
 import bookingRoutes from "./routes/my-bookings.routes";
+import cron from "node-cron";
+import axios from "axios";
 
 dotenv.config();
 
@@ -30,6 +32,15 @@ app.use("/api/bookings", bookingRoutes);
 
 app.get("/", (req, res) => {
   res.send("api is running");
+});
+cron.schedule("*/14 * * * * *", async () => {
+  try {
+    const baseUrl = " https://sheeshmahal-backend-2.onrender.com/";
+    const response = await axios.get(baseUrl);
+    console.log("Data fetched from API:", response.data);
+  } catch (error) {
+    console.error("Error in cron job:", error);
+  }
 });
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
