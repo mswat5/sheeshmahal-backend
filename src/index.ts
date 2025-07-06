@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     credentials: true,
   })
 );
@@ -27,7 +27,7 @@ app.use("/api/bookings", bookingRoutes);
 app.get("/", (req, res) => {
   res.send("api is running");
 });
-
-app.listen(8000, () => {
-  console.log("server running on 8000");
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
+  console.log(`server running on ${PORT}`);
 });
